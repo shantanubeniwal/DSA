@@ -51,7 +51,7 @@ void leftRotate(struct RedBlackTree tree, struct node* x){
 void rightRotate(struct RedBlackTree tree, struct node* x){
     struct node *y = x->left;
     x->left = y->right;
-    
+
     if (y->right != tree.NIL)
     {
         y->right->parent = x;
@@ -68,6 +68,45 @@ void rightRotate(struct RedBlackTree tree, struct node* x){
     }
     y->right = x;
     x->parent = y;
+}
+
+void insertFixup(struct RedBlackTree* tree, struct node* z){
+    while (z->parent->color == RED)
+    {
+        
+    }
+    
+}
+
+// Insert a node into the red-black tree
+void insert(struct RedBlackTree* tree, int data){
+    struct node *newNode = createNode(tree, data);
+    struct node *y = tree->NIL;
+    struct node *x = tree->root;
+
+    while (x != tree->NIL)
+    {
+        y = x;
+        if (data < x->data)
+        {
+            x = x->left;
+        }else{
+            x = x->right;
+        }
+    }
+
+    newNode->parent = y;
+    if (y == tree->NIL)
+    {
+        tree->root = newNode;
+    }else if (data < y->data)
+    {
+        y->left = newNode;
+    }else{
+        y->right = newNode;
+    }
+
+    insertFixup(tree, newNode);
 }
 
     int main()
