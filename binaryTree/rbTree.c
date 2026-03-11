@@ -83,7 +83,7 @@ void insertFixup(struct redBlackTRee* tree, struct node* newNode){
         // case B-2: uncle is red and in zigzag positon
         // case B-3: uncle is red and in straight line
     }
-    
+    tree->root->color = BLACK;
 }
 
 void insert(struct redBlackTRee* tree, int value){
