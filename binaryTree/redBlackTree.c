@@ -173,6 +173,13 @@ void insert(struct RedBlackTree* tree, int data){
     insertFixup(tree, newNode);
 }
 
+// Delete a node
+// If the deleted node is Red: No properties are violated. We just remove it.
+// If the deleted node is Black: We lose a black node on one specific path. This violates the Black Height Property
+void delete(struct RedBlackTree* tree, int data){
+
+}
+
 // Helper function to print the tree in-order
 void printInOrder(struct RedBlackTree* tree, struct node* root) {
     if (root != tree->NIL) {
