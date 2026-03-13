@@ -41,4 +41,4 @@ I am currently focusing on hierarchical structures. My BST implementation includ
 
 ### 📫 How to Connect
 - **GitHub:** [@shantanubeniwal](https://github.com/shantanubeniwal)
-- **LinkedIn:** [Shantanu Beniwal](www.linkedin.com/in/shantanu-beniwal-5973332a7)
+- **LinkedIn:** [Shantanu Beniwal](https://www.linkedin.com/in/shantanu-beniwal-5973332a7)
