@@ -174,10 +174,108 @@ void insert(struct RedBlackTree* tree, int data){
 }
 
 // Delete a node
+// code is based on CLRS book pseudocode
 // If the deleted node is Red: No properties are violated. We just remove it.
 // If the deleted node is Black: We lose a black node on one specific path. This violates the Black Height Property
-void delete(struct RedBlackTree* tree, int data){
 
+struct node* search(struct RedBlackTree* tree, int value){
+    struct node *x = tree->root;
+    while (x != tree->NIL)
+    {
+        if (value < x->data)
+        {
+            x = x->left;
+        }else if (value > x->data)
+        {
+            x = x->right;
+        }else
+        {
+            return x;
+        }
+    }
+    return x;
+}
+
+struct node* node_minimum(struct RedBlackTree* tree ,struct node* node){
+    struct node *x = node;
+    struct node *y = NULL;
+    while (x != tree->NIL)
+    {
+        y = x;
+        x = x->left;
+    }
+    return y;
+}
+
+void RB_Transplant(struct RedBlackTree* tree, struct node* u, struct node* v){
+    if (u->parent == tree->NIL)
+    {
+        tree->root = v;
+    }else if (u == u->parent->left)
+    {
+        u->parent->left = v;
+    }else
+    {
+        u->parent->right = v;
+    }
+    v->parent = u->parent;
+}
+void delete(struct RedBlackTree* tree, int data){
+    struct node *z = search(tree, data);
+    struct node *y = z;
+    struct node *x = NULL;
+    int y_original_color = y->color;
+
+    if (z == tree->NIL)
+    {
+        printf("no matching node is found to delete");
+        return;
+    }
+
+    // if z have only one child or no child
+    if (z->left == tree->NIL)
+    {
+        x = z->right;
+        RB_Transplant(tree, z, z->right);
+    }else if (z->right == tree->NIL)
+    {
+        x = x->left;
+        RB_Transplant(tree, z, z->left);
+    }else
+    {
+        // -------- identify the problem with this code --------
+
+        
+        // if z have two children
+        y = node_minimum(tree, z->right);
+        y_original_color = y->color;
+        x = y->right;
+        if (y != z->right)
+        {
+            // y is not direct child of z
+            RB_Transplant(tree, y, y->right);
+            y->right = z->right;
+            y->right->parent = y;
+
+            y->left = z->left;
+            y->left->parent = y;
+            y->color = z->color;
+            RB_Transplant(tree, z, y);
+        }else
+        {
+            // if y is direct child of z
+            x->parent = y;
+            RB_Transplant(tree, z, y);
+            y->left = z->left;
+            y->left->parent = y;
+            y->color = z->color;
+        }
+        // RB_Transplant(tree, z, y);
+        // y->left = z->left;
+        // y->left->parent = y;
+        // y->color = z->color;
+    }
+    
 }
 
 // Helper function to print the tree in-order
