@@ -220,6 +220,7 @@ void RB_Transplant(struct RedBlackTree* tree, struct node* u, struct node* v){
     }
     v->parent = u->parent;
 }
+
 void delete(struct RedBlackTree* tree, int data){
     struct node *z = search(tree, data);
     struct node *y = z;
@@ -239,13 +240,10 @@ void delete(struct RedBlackTree* tree, int data){
         RB_Transplant(tree, z, z->right);
     }else if (z->right == tree->NIL)
     {
-        x = x->left;
+        x = z->left;
         RB_Transplant(tree, z, z->left);
     }else
     {
-        // -------- identify the problem with this code --------
-
-        
         // if z have two children
         y = node_minimum(tree, z->right);
         y_original_color = y->color;
@@ -256,26 +254,89 @@ void delete(struct RedBlackTree* tree, int data){
             RB_Transplant(tree, y, y->right);
             y->right = z->right;
             y->right->parent = y;
-
-            y->left = z->left;
-            y->left->parent = y;
-            y->color = z->color;
-            RB_Transplant(tree, z, y);
         }else
         {
             // if y is direct child of z
             x->parent = y;
-            RB_Transplant(tree, z, y);
-            y->left = z->left;
-            y->left->parent = y;
-            y->color = z->color;
         }
-        // RB_Transplant(tree, z, y);
-        // y->left = z->left;
-        // y->left->parent = y;
-        // y->color = z->color;
+        RB_Transplant(tree, z, y);
+        y->left = z->left;
+        y->left->parent = y;
+        y->color = z->color;
     }
-    
+    free(z);
+    if (y_original_color == BLACK)
+    {
+        RB_Delete_Fixup(tree, x);
+    }
+}
+
+void RB_Delete_Fixup(struct RedBlackTree* tree, struct node* x){
+    struct node *w = NULL;
+    while (x != tree->NIL && x->color == BLACK)
+    {
+        // if x is left child
+        if (x == x->parent->left)
+        {
+            w = x->parent->right;
+            if (w->color == RED)
+            {
+                w->color = BLACK;
+                x->parent->color = RED;
+                leftRotate(tree, x->parent);
+                w = x->parent->right;
+            }
+            if (w->left->color == BLACK && w->right->color == BLACK)
+            {
+                w->color = RED;
+                x = x->parent;
+            }else
+            {
+                if (w->right->color == BLACK)
+                {
+                    w->left->color = BLACK;
+                    w->color = RED;
+                    rightRotate(tree, w);
+                    w = x->parent->right;
+                }
+                w->color = x->parent->color;
+                x->parent->color = BLACK;
+                w->right->color = BLACK;
+                leftRotate(tree, x->parent);
+                x = tree->root;
+            }
+        }else
+        {
+            w = x->parent->left;
+            if (w->color == RED)
+            {
+                w->color = BLACK;
+                x->parent->color = RED;
+                rightRotate(tree, x->parent);
+                w = x->parent->left;
+            }
+            if (w->right->color == BLACK && w->left->color == BLACK)
+            {
+                w->color = RED;
+                x = x->parent;
+            }else
+            {
+                if (w->left->color == BLACK)
+                {
+                    w->right->color = BLACK;
+                    w->color = RED;
+                    leftRotate(tree, w);
+                    w = x->parent->left;
+                }
+                w->color = x->parent->color;
+                x->parent->color = BLACK;
+                w->left->color = BLACK;
+                rightRotate(tree, x->parent);
+                x = tree->root;
+            }
+        }
+    }
+    x->color = BLACK;
 }
 
 // Helper function to print the tree in-order
@@ -311,6 +372,9 @@ int main()
     insert(&tree, 75);
     insert(&tree, 45);
     insert(&tree, 65);
+
+    printf("Tree after deletion of 20:\n");
+    delete(&tree, 20);
 
     printf("Red-Black Tree In-Order Traversal:\n");
     printInOrder(&tree, tree.root);
