@@ -221,6 +221,9 @@ void RB_Transplant(struct RedBlackTree* tree, struct node* u, struct node* v){
     v->parent = u->parent;
 }
 
+// implicit declaration ERROR resolved.
+void RB_Delete_Fixup(struct RedBlackTree* tree, struct node* x);
+
 void delete(struct RedBlackTree* tree, int data){
     struct node *z = search(tree, data);
     struct node *y = z;
