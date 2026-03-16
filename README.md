@@ -10,8 +10,8 @@ Welcome to my DSA repository! This is a collection of my implementations, proble
 | **Arrays & Strings** | ✅ Done | Searching, Sorting, Two Pointers |
 | **Linked Lists** | ✅ Done | Singly, Doubly, Circular |
 | **Stacks & Queues** | ✅ Done | LIFO/FIFO, Infix-to-Postfix |
-| **Trees (BST)** | **Active** | **In-order/Pre-order, Deletion, Searching** |
-| **Heaps** | ⏳ Upcoming | Max-Heap, Min-Heap |
+| **Trees (BST)** | ✅ Done | **In-order/Pre-order, Deletion, Searching** |
+| **Heaps** | **Active** | Max-Heap, Min-Heap |
 | **Graphs** | ⏳ Upcoming | BFS, DFS, Dijkstra’s |
 
 ---
