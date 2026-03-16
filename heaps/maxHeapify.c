@@ -15,16 +15,13 @@ void swap(int *a, int *b){
 void MAX_HEAPIFY(int heap[], int heap_size, int i){
     int l = LEFT(i);
     int r = RIGHT(i);
-    // assume i element is largest
     int largest = i;
 
-    // check left child is larger then parent
     if (l < heap_size && heap[l] > heap[largest])
     {
         largest = l;
     }
     
-    // check right child is larger then largest ( parent or child or both )
     if(r < heap_size && heap[r] > heap[largest])
     {
         largest = r;
