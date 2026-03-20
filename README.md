@@ -12,7 +12,7 @@ Welcome to my DSA repository! This is a collection of my implementations, proble
 | **Stacks & Queues** | ✅ Done | LIFO/FIFO, Infix-to-Postfix |
 | **Trees (BST)** | ✅ Done | **In-order/Pre-order, Deletion, Searching** |
 | **Heaps** | ✅ Done | Max-Heap, Min-Heap, Priority Queue |
-| **Graphs** | **Active** | Hashing, chaining, Hash function |
+| **Hashing** | **Active** | Hashing, chaining, Hash function |
 | **Graphs** | ⏳ Upcoming | BFS, DFS, Dijkstra’s |
 
 ---
