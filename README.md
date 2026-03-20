@@ -24,13 +24,11 @@ Welcome to my DSA repository! This is a collection of my implementations, proble
 
 ---
 
-### 🌲 Featured Implementation: Binary Search Tree (BST)
-I am currently focusing on hierarchical structures. My BST implementation includes:
-- **Search:** $O(\log n)$ average time complexity.
-- **Insertion:** Recursive and Iterative approaches.
-- **Deletion:** Handling nodes with zero, one, or two children.
-- **Traversals:** In-order, Pre-order, and Post-order.
-
+### 🔑 Current Focus: Hash Table (Chaining)
+I am currently focusing on Hashing to explore $O(1)$ average time complexity for data retrieval.
+- **Hash Function:** Using a polynomial rolling hash with a prime multiplier (37) for uniform distribution.
+- **Collision Management:** Implemented **Separate Chaining** using dynamic linked lists.
+- **Memory Safety:** Manual heap management using `malloc` and `free` to handle dynamic buckets.
 ---
 
 ### 📈 Learning Goals
