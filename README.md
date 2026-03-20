@@ -11,7 +11,8 @@ Welcome to my DSA repository! This is a collection of my implementations, proble
 | **Linked Lists** | ✅ Done | Singly, Doubly, Circular |
 | **Stacks & Queues** | ✅ Done | LIFO/FIFO, Infix-to-Postfix |
 | **Trees (BST)** | ✅ Done | **In-order/Pre-order, Deletion, Searching** |
-| **Heaps** | **Active** | Max-Heap, Min-Heap |
+| **Heaps** | ✅ Done | Max-Heap, Min-Heap, Priority Queue |
+| **Graphs** | **Active** | Hashing, chaining, Hash function |
 | **Graphs** | ⏳ Upcoming | BFS, DFS, Dijkstra’s |
 
 ---
