@@ -12,8 +12,8 @@ Welcome to my DSA repository! This is a collection of my implementations, proble
 | **Stacks & Queues** | ✅ Done | LIFO/FIFO, Infix-to-Postfix |
 | **Trees (BST)** | ✅ Done | **In-order/Pre-order, Deletion, Searching** |
 | **Heaps** | ✅ Done | Max-Heap, Min-Heap, Priority Queue |
-| **Hashing** | **Active** | Hashing, chaining, Hash function |
-| **Graphs** | ⏳ Upcoming | BFS, DFS, Dijkstra’s |
+| **Hashing** | ✅ Done | Hashing, chaining, Hash function |
+| **Graphs** | **Active** | BFS, DFS, Dijkstra’s |
 
 ---
 
@@ -24,11 +24,12 @@ Welcome to my DSA repository! This is a collection of my implementations, proble
 
 ---
 
-### 🔑 Current Focus: Hash Table (Chaining)
-I am currently focusing on Hashing to explore $O(1)$ average time complexity for data retrieval.
-- **Hash Function:** Using a polynomial rolling hash with a prime multiplier (37) for uniform distribution.
-- **Collision Management:** Implemented **Separate Chaining** using dynamic linked lists.
-- **Memory Safety:** Manual heap management using `malloc` and `free` to handle dynamic buckets.
+### 🔑 Current Focus: Graph Traversals (BFS & DFS)
+I am currently diving into **Graph Theory**, focusing on how to represent and navigate complex non-linear data structures.
+- **Representations:** Implementing graphs using **Adjacency Lists** for space efficiency ($O(V+E)$).
+- **Search Algorithms:** Mastering **Breadth-First Search (BFS)** using a Queue-based approach for shortest paths in unweighted graphs.
+- **Next Up:** Implementing **Depth-First Search (DFS)** using recursion and a stack-based approach.
+
 ---
 
 ### 📈 Learning Goals
